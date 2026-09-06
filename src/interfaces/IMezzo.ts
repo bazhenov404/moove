@@ -4,7 +4,7 @@ export type TipoMezzo = "bici" | "scooter" | "monopattino";
 export type StatoMezzo = "disponibile" | "in uso";
 
 export interface IMezzo {
-    typo: TipoMezzo;
+    tipo: TipoMezzo;
     id: string;
     stato: StatoMezzo;
 
