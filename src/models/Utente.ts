@@ -1,13 +1,13 @@
 import type { IMezzo } from "../interfaces/IMezzo";
-import type { IUtente } from "../interfaces/IUtente";
+import type { IUtente, MetodoPagamento } from "../interfaces/IUtente";
 
 export class Utente implements IUtente {
     nome: string;
     cognome: string;
     email: string;
-    metodoPagamento: string;
+    metodoPagamento: MetodoPagamento;
 
-    constructor(nome: string, cognome: string, email: string, metodoPagamento: string) {
+    constructor(nome: string, cognome: string, email: string, metodoPagamento: MetodoPagamento) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
