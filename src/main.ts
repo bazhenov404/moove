@@ -18,4 +18,5 @@ milano.aggiungiMezzo(monopattino1);
 mario.prenotaMezzo(bici1);
 anna.prenotaMezzo(scooter1);
 
-console.log(milano.mezziDisponibili);
+console.log(milano.mezzi);
+console.log(milano.getMezziDisponibili());

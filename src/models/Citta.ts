@@ -3,15 +3,15 @@ import type { IMezzo } from "../interfaces/IMezzo";
 
 export class Citta implements ICitta {
   nome: string;
-  mezziDisponibili: IMezzo[];
+  mezzi: IMezzo[];
 
   constructor(nome: string) {
     this.nome = nome;
-    this.mezziDisponibili = [];
+    this.mezzi = [];
   }
 
   aggiungiMezzo(mezzo: IMezzo): void {
-    const mezzoEsistente = this.mezziDisponibili.find((m) => m.id === mezzo.id);
+    const mezzoEsistente = this.mezzi.find((m) => m.id === mezzo.id);
 
     if (mezzoEsistente) {
       console.log(
@@ -20,10 +20,14 @@ export class Citta implements ICitta {
       return;
     }
 
-    this.mezziDisponibili.push(mezzo);
+    this.mezzi.push(mezzo);
 
     console.log(
       `${mezzo.tipo} ${mezzo.id} aggiunto alla città di ${this.nome}`,
     );
+  }
+
+  getMezziDisponibili(): IMezzo[] {
+    return this.mezzi.filter((mezzo) => mezzo.stato === "disponibile");
   }
 }

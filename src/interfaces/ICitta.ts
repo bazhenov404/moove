@@ -2,7 +2,9 @@ import type { IMezzo } from "./IMezzo";
 
 export interface ICitta {
     nome: string;
-    mezziDisponibili: IMezzo[];
+    mezzi: IMezzo[];
 
     aggiungiMezzo(mezzo: IMezzo): void;
+    getMezziDisponibili(): IMezzo[];
 }
+

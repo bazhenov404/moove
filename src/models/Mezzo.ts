@@ -4,12 +4,12 @@ import type {IUtente} from "../interfaces/IUtente";
 export class Mezzo implements IMezzo {
     tipo: TipoMezzo;
     id: string;
-    stato: StatoMezzo
+    stato: StatoMezzo;
 
-    constructor(tipo: TipoMezzo, id: string,) {
+    constructor(tipo: TipoMezzo, id: string) {
         this.tipo = tipo;
         this.id = id;
-        this.stato = "disponibile"
+        this.stato = "disponibile";
     }
 
     assegnaUtente(utente: IUtente): void {
