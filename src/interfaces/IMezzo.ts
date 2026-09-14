@@ -7,6 +7,8 @@ export interface IMezzo {
     tipo: TipoMezzo;
     id: string;
     stato: StatoMezzo;
+    utenteAssegnato: IUtente | null;
 
     assegnaUtente(utente: IUtente): void;
+    liberaMezzo(utente: IUtente): void;
 }
