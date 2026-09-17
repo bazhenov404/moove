@@ -11,6 +11,8 @@ export interface IUtente {
     cognome: string;
     email: string;
     metodoPagamento: MetodoPagamento;
+    mezzoAttuale: IMezzo | null;
 
     prenotaMezzo(mezzo: IMezzo): void;
+    terminaCorsa(): void;
 }
