@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,176 +11,247 @@
 
 <body>
 
-  <!-- NAVBAR qui -->
-
+  <!-- NAVBAR -->
   <header class="barra-navigazione">
-
-    <a class="logo" href="#">
-      moove.
-    </a>
+    <a class="logo" href="#">moove.</a>
 
     <nav class="navigazione">
       <a href="#mezzi">Mezzi</a>
+      <a href="#come-funziona">Come funziona</a>
       <a href="#chi-siamo">Chi siamo</a>
     </nav>
-
   </header>
 
 
   <main>
 
-    <!-- HERO qui-->
-
+    <!-- HERO -->
     <section class="hero">
 
-      <p class="sopratitolo">
-        MICROMOBILITÀ CONDIVISA
-      </p>
+      <div class="contenuto-hero">
 
-      <h1>
-        La tua città.<br>
-        Il tuo <span>movimento.</span>
-      </h1>
+        <p class="sopratitolo">
+          MICROMOBILITÀ CONDIVISA
+        </p>
 
-      <p class="descrizione-hero">
-        Bici, scooter e monopattini elettrici disponibili quando ne hai bisogno.
-        Muoviti in città in modo semplice, flessibile e sostenibile.
-      </p>
+        <h1>
+          La tua città.<br>
+          Il tuo <span>movimento.</span>
+        </h1>
 
-      <a class="pulsante-hero" href="#mezzi">
-        Trova un mezzo
-      </a>
+        <p class="descrizione-hero">
+          Bici, scooter e monopattini elettrici disponibili
+          quando ne hai bisogno. Muoviti in città in modo
+          semplice, flessibile e sostenibile.
+        </p>
+
+        <a class="pulsante-principale" href="#mezzi">
+          Trova un mezzo
+          <span>→</span>
+        </a>
+
+      </div>
+
+
+      <div class="grafica-hero">
+
+        <div class="cerchio-grande">
+          <span class="icona-hero">🛴</span>
+        </div>
+
+        <div class="etichetta-hero">
+          <span class="punto-verde"></span>
+          Mezzi disponibili
+        </div>
+
+      </div>
 
     </section>
 
+
     <section id="mezzi" class="sezione-mezzi">
 
-      <div class="intestazione-sezione">
+      <div class="contenitore">
 
-        <div>
+        <div class="intestazione-sezione">
 
-          <p class="sopratitolo">
-            MILANO
-          </p>
+          <div>
+            <p class="sopratitolo">MILANO</p>
+            <h2>Mezzi vicino a te</h2>
+          </div>
 
-          <h2>
-            Mezzi vicino a te
-          </h2>
+          <div class="statistiche">
+            <span>3 mezzi</span>
+            <span class="testo-disponibile">
+              3 disponibili
+            </span>
+          </div>
 
         </div>
 
 
-        <div class="statistiche">
+        <div class="griglia-mezzi">
 
-          <span>
-            3 mezzi
-          </span>
+          <article class="card-mezzo">
 
-          <span class="disponibile">
-            2 disponibili
-          </span>
+            <div class="parte-superiore-card">
+              <span class="icona-mezzo">🚲</span>
+
+              <span class="stato disponibile">
+                Disponibile
+              </span>
+            </div>
+
+            <div class="informazioni-mezzo">
+              <h3>Bici</h3>
+              <p class="id-mezzo">BIKE-001</p>
+            </div>
+
+            <button class="pulsante-prenota">
+              Prenota
+              <span>→</span>
+            </button>
+
+          </article>
+
+
+          <article class="card-mezzo">
+
+            <div class="parte-superiore-card">
+              <span class="icona-mezzo">🛴</span>
+
+              <span class="stato disponibile">
+                Disponibile
+              </span>
+            </div>
+
+            <div class="informazioni-mezzo">
+              <h3>Monopattino</h3>
+              <p class="id-mezzo">MONO-001</p>
+            </div>
+
+            <button class="pulsante-prenota">
+              Prenota
+              <span>→</span>
+            </button>
+
+          </article>
+
+
+          <article class="card-mezzo">
+
+            <div class="parte-superiore-card">
+              <span class="icona-mezzo">🛵</span>
+
+              <span class="stato disponibile">
+                Disponibile
+              </span>
+            </div>
+
+            <div class="informazioni-mezzo">
+              <h3>Scooter elettrico</h3>
+              <p class="id-mezzo">SCOOTER-001</p>
+            </div>
+
+            <button class="pulsante-prenota">
+              Prenota
+              <span>→</span>
+            </button>
+
+          </article>
 
         </div>
 
       </div>
 
-
-      <!-- CONTENITORE DELLE CARD QUI -->
-
-      <div class="griglia-mezzi">
-
-        <article class="card-mezzo">
-
-          <div class="parte-superiore-card">
-
-            <span class="icona-mezzo">
-              🚲
-            </span>
-
-            <span class="stato disponibile">
-              Disponibile
-            </span>
-
-          </div>
+    </section>
 
 
-          <h3>
-            Bici
-          </h3>
+    <section id="come-funziona" class="come-funziona">
 
-          <p class="id-mezzo">
-            BIKE-001
+      <div class="contenitore">
+
+        <p class="sopratitolo">
+          SEMPLICE E VELOCE
+        </p>
+
+        <h2>Come funziona</h2>
+
+
+        <div class="griglia-passaggi">
+
+          <article class="passaggio">
+            <span class="numero-passaggio">01</span>
+
+            <h3>Trova</h3>
+
+            <p>
+              Trova il mezzo disponibile più vicino
+              nella tua città.
+            </p>
+          </article>
+
+
+          <article class="passaggio">
+            <span class="numero-passaggio">02</span>
+
+            <h3>Prenota</h3>
+
+            <p>
+              Scegli il mezzo che preferisci e
+              prenotalo in pochi secondi.
+            </p>
+          </article>
+
+
+          <article class="passaggio">
+            <span class="numero-passaggio">03</span>
+
+            <h3>Parti</h3>
+
+            <p>
+              Sblocca il mezzo e inizia a muoverti
+              liberamente per la città.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="chi-siamo" class="chi-siamo">
+
+      <div class="contenitore contenuto-chi-siamo">
+
+        <div>
+          <p class="sopratitolo">
+            LA NOSTRA VISIONE
           </p>
 
-
-          <button class="pulsante-prenota">
-            Prenota mezzo
-          </button>
-
-        </article>
-
-        <article class="card-mezzo">
-
-          <div class="parte-superiore-card">
-
-            <span class="icona-mezzo">
-              🛴
-            </span>
-
-            <span class="stato non-disponibile">
-              In uso
-            </span>
-
-          </div>
+          <h2>
+            Città migliori,<br>
+            un viaggio alla volta.
+          </h2>
+        </div>
 
 
-          <h3>
-            Monopattino
-          </h3>
+        <div class="testo-chi-siamo">
 
-          <p class="id-mezzo">
-            MONO-001
+          <p>
+            Moove nasce per rendere la mobilità urbana
+            più sostenibile, accessibile e condivisa.
           </p>
 
-
-          <button
-            class="pulsante-prenota"
-            disabled
-          >
-            Non disponibile
-          </button>
-
-        </article>
-
-        <article class="card-mezzo">
-
-          <div class="parte-superiore-card">
-
-            <span class="icona-mezzo">
-              🛵
-            </span>
-
-            <span class="stato disponibile">
-              Disponibile
-            </span>
-
-          </div>
-
-
-          <h3>
-            Scooter elettrico
-          </h3>
-
-          <p class="id-mezzo">
-            SCOOTER-001
+          <p>
+            Bici, scooter e monopattini elettrici
+            permettono di spostarsi in modo flessibile,
+            riducendo traffico e impatto ambientale.
           </p>
 
-
-          <button class="pulsante-prenota">
-            Prenota mezzo
-          </button>
-
-        </article>
+        </div>
 
       </div>
 
@@ -190,20 +260,29 @@
   </main>
 
 
-  <!-- FOOTER qui -->
-
+  <!-- FOOTER -->
   <footer class="footer">
 
-    <p>
-      Moove — Micromobilità condivisa per città migliori.
-    </p>
+    <div class="contenitore contenuto-footer">
 
-    <p>
-      Progetto TypeScript
-    </p>
+      <div>
+        <a class="logo logo-footer" href="#">
+          moove.
+        </a>
+
+        <p>
+          Muoviti meglio.<br>
+          Vivi la città.
+        </p>
+      </div>
+
+      <p class="progetto">
+        Progetto TypeScript
+      </p>
+
+    </div>
 
   </footer>
 
 </body>
-
 </html>
