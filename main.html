@@ -76,12 +76,12 @@
             </div>
 
             <div class="statistiche">
-              <span>3 mezzi</span>
-              <span class="testo-disponibile"> 3 disponibili </span>
+              <span id="totale-mezzi">0 mezzi</span>
+              <span id="mezzi-disponibili" class="testo-disponibile"> 3 disponibili </span>
             </div>
           </div>
 
-          <div class="griglia-mezzi">
+          <div id="lista-mezzi" class="griglia-mezzi">
             <article class="card-mezzo">
               <div class="parte-superiore-card">
                 <span class="icona-mezzo">🚲</span>
@@ -218,5 +218,7 @@
         <p class="progetto">Progetto TypeScript</p>
       </div>
     </footer>
+
+    <script type="module" src="./dist/main.js"></script>
   </body>
 </html>

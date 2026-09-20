@@ -20,3 +20,71 @@ anna.prenotaMezzo(scooter1);
 
 console.log(milano.mezzi);
 console.log(milano.getMezziDisponibili());
+
+const listaMezzi = document.querySelector<HTMLDivElement>("#lista-mezzi");
+
+const totaleMezzi =
+  document.querySelector<HTMLSpanElement>("#totale-mezzi");
+
+const mezziDisponibili =
+  document.querySelector<HTMLSpanElement>("#mezzi-disponibili");
+
+  if (!listaMezzi || !totaleMezzi || !mezziDisponibili) {
+  throw new Error("Elementi dell'interfaccia non trovati");
+}
+
+milano.mezzi.forEach((mezzo) => {
+  const card = document.createElement("article");
+
+  card.classList.add("card-mezzo");
+
+  card.innerHTML = `
+    <div class="parte-superiore-card">
+
+      <span class="icona-mezzo">
+        ${mezzo.tipo === "bici"
+          ? "🚲"
+          : mezzo.tipo === "monopattino"
+            ? "🛴"
+            : "🛵"}
+      </span>
+
+      <span class="stato ${
+        mezzo.stato === "disponibile"
+          ? "disponibile"
+          : "non-disponibile"
+      }">
+        ${
+          mezzo.stato === "disponibile"
+            ? "Disponibile"
+            : "In uso"
+        }
+      </span>
+
+    </div>
+
+    <div class="informazioni-mezzo">
+      <h3>${mezzo.tipo}</h3>
+      <p class="id-mezzo">${mezzo.id}</p>
+    </div>
+
+    <button
+      class="pulsante-prenota"
+      ${mezzo.stato !== "disponibile" ? "disabled" : ""}
+    >
+      ${mezzo.stato === "disponibile"
+        ? "Prenota"
+        : "Non disponibile"}
+
+      <span>→</span>
+    </button>
+  `;
+
+  listaMezzi.appendChild(card);
+});
+
+totaleMezzi.textContent =
+  `${milano.mezzi.length} mezzi`;
+
+mezziDisponibili.textContent =
+  `${milano.getMezziDisponibili().length} disponibili`;
