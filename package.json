@@ -1,20 +1,22 @@
 {
-  "name": "veloop",
+  "name": "moove",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Progetto TypeScript per la gestione di un servizio di micromobilità condivisa.",
   "scripts": {
-  "build": "tsc",
-  "watch": "tsc --watch"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bazhenov404/veloop.git"
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "micromobility"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/bazhenov404/veloop/issues"
   },
