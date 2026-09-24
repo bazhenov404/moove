@@ -1,5 +1,5 @@
-import type { ICitta } from "../interfaces/ICitta";
-import type { IMezzo } from "../interfaces/IMezzo";
+import type { ICitta } from "../interfaces/ICitta.js";
+import type { IMezzo } from "../interfaces/IMezzo.js";
 
 export class Citta implements ICitta {
   nome: string;

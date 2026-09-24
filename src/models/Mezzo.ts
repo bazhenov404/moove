@@ -1,5 +1,5 @@
-import type {IMezzo, StatoMezzo, TipoMezzo} from "../interfaces/IMezzo";
-import type {IUtente} from "../interfaces/IUtente";
+import type {IMezzo, StatoMezzo, TipoMezzo} from "../interfaces/IMezzo.js";
+import type {IUtente} from "../interfaces/IUtente.js";
 
 export class Mezzo implements IMezzo {
     tipo: TipoMezzo;

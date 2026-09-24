@@ -1,4 +1,4 @@
-import type { IMezzo } from "./IMezzo";
+import type { IMezzo } from "./IMezzo.js";
 
 export type MetodoPagamento =
     | "Carta di credito"

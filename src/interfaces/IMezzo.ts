@@ -1,4 +1,4 @@
-import type { IUtente } from "./IUtente";
+import type { IUtente } from "./IUtente.js";
 
 export type TipoMezzo = "bici" | "scooter" | "monopattino";
 export type StatoMezzo = "disponibile" | "in uso";

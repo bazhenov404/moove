@@ -1,4 +1,4 @@
-import type { IMezzo } from "./IMezzo";
+import type { IMezzo } from "./IMezzo.js";
 
 export interface ICitta {
     nome: string;

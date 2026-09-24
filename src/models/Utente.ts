@@ -1,5 +1,5 @@
-import type { IMezzo } from "../interfaces/IMezzo";
-import type { IUtente, MetodoPagamento } from "../interfaces/IUtente";
+import type { IMezzo } from "../interfaces/IMezzo.js";
+import type { IUtente, MetodoPagamento } from "../interfaces/IUtente.js";
 
 export class Utente implements IUtente {
     nome: string;

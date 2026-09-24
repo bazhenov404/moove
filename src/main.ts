@@ -1,6 +1,6 @@
-import { Mezzo } from "./models/Mezzo";
-import { Utente } from "./models/Utente";
-import { Citta } from "./models/Citta";
+import { Mezzo } from "./models/Mezzo.js";
+import { Utente } from "./models/Utente.js";
+import { Citta } from "./models/Citta.js";
 
 const bici1 = new Mezzo("bici", "BIKE-001");
 const scooter1 = new Mezzo("scooter", "SCOOTER-001");
@@ -13,12 +13,7 @@ const mario = new Utente(
   "Carta di credito",
 );
 
-const anna = new Utente(
-  "Anna", 
-  "Bianchi", 
-  "anna.bianchi@email.com", 
-  "PayPal"
-);
+const anna = new Utente("Anna", "Bianchi", "anna.bianchi@email.com", "PayPal");
 
 const milano = new Citta("Milano");
 
@@ -45,6 +40,26 @@ function renderMezzi(): void {
 
     card.classList.add("card-mezzo");
     card.dataset.id = mezzo.id;
+
+    const isMioMezzo = mezzo.utenteAssegnato?.email === mario.email;
+
+    let testoBottone: string;
+    let disabledAttr: string;
+    let azione: string;
+
+    if (mezzo.stato === "disponibile") {
+      testoBottone = "Prenota";
+      disabledAttr = "";
+      azione = "prenota";
+    } else if (isMioMezzo) {
+      testoBottone = "Termina corsa";
+      disabledAttr = "";
+      azione = "termina";
+    } else {
+      testoBottone = "Non disponibile";
+      disabledAttr = "disabled";
+      azione = "";
+    }
 
     card.innerHTML = `
       <div class="parte-superiore-card">
@@ -73,15 +88,44 @@ function renderMezzi(): void {
       </div>
 
       <button
-        class="pulsante-prenota"
-        data-id="${mezzo.id}"
-        ${mezzo.stato !== "disponibile" ? "disabled" : ""}
-      >
-        ${mezzo.stato === "disponibile" ? "Prenota" : "Non disponibile"}
+  class="pulsante-prenota"
+  data-id="${mezzo.id}"
+  data-azione="${azione}"
+  ${disabledAttr}
+>
+  ${testoBottone}
+  <span>→</span>
+</button>
 
-        <span>→</span>
-      </button>
     `;
+
+    const pulsantePrenota =
+      card.querySelector<HTMLButtonElement>(".pulsante-prenota");
+
+    if (!pulsantePrenota) {
+      return;
+    }
+
+    pulsantePrenota.addEventListener("click", () => {
+      const mezzoId = pulsantePrenota.dataset.id;
+      const azioneClick = pulsantePrenota.dataset.azione;
+      const mezzoSelezionato = milano.mezzi.find(
+        (mezzo) => mezzo.id === mezzoId,
+      );
+
+      if (!mezzoSelezionato) {
+        console.error("mezzo non trovato");
+        return;
+      }
+
+      if (azioneClick === "prenota") {
+        mario.prenotaMezzo(mezzoSelezionato);
+      } else if (azioneClick === "termina") {
+        mario.terminaCorsa();
+      }
+
+      renderMezzi();
+    });
 
     listaMezzi.appendChild(card);
   });
