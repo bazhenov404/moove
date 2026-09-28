@@ -1,6 +1,7 @@
 import { Mezzo } from "./models/Mezzo.js";
 import { Utente } from "./models/Utente.js";
 import { Citta } from "./models/Citta.js";
+import type { TipoMezzo } from "./interfaces/IMezzo.js";
 
 const bici1 = new Mezzo("bici", "BIKE-001");
 const scooter1 = new Mezzo("scooter", "SCOOTER-001");
@@ -12,8 +13,6 @@ const mario = new Utente(
   "mario.rossi@email.com",
   "Carta di credito",
 );
-
-const anna = new Utente("Anna", "Bianchi", "anna.bianchi@email.com", "PayPal");
 
 const milano = new Citta("Milano");
 
@@ -27,6 +26,12 @@ const totaleMezzi = document.querySelector<HTMLSpanElement>("#totale-mezzi");
 
 const mezziDisponibili =
   document.querySelector<HTMLSpanElement>("#mezzi-disponibili");
+
+const nomiVisualizzati: Record<TipoMezzo, string> = {
+  bici: "Bici",
+  scooter: "Scooter elettrico",
+  monopattino: "Monopattino",
+};
 
 function renderMezzi(): void {
   if (!listaMezzi || !totaleMezzi || !mezziDisponibili) {
@@ -83,7 +88,7 @@ function renderMezzi(): void {
       </div>
 
       <div class="informazioni-mezzo">
-        <h3>${mezzo.tipo}</h3>
+        <h3>${nomiVisualizzati[mezzo.tipo]}</h3>
         <p class="id-mezzo">${mezzo.id}</p>
       </div>
 
