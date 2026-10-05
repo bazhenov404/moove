@@ -1,5 +1,6 @@
 import type { IMezzo } from "../interfaces/IMezzo.js";
 import type { IUtente, MetodoPagamento } from "../interfaces/IUtente.js";
+import type { RisultatoAzione } from "../interfaces/RisultatoAzione.js";
 
 export class Utente implements IUtente {
     nome: string;
@@ -16,26 +17,42 @@ export class Utente implements IUtente {
         this.mezzoAttuale = null;
     }
 
-    prenotaMezzo(mezzo: IMezzo): void {
+    prenotaMezzo(mezzo: IMezzo): RisultatoAzione {
         if (this.mezzoAttuale) {
-            console.log(`L'utente ${this.nome} ${this.cognome} ha già prenotato un mezzo.`);
-            return;
+            return {
+                sucesso: false,
+                messaggio: `L'utente ${this.nome} ${this.cognome} ha già un mezzo in uso.`,
+            }
         }
         if(mezzo.stato === "disponibile") {
-            mezzo.assegnaUtente(this);
-            this.mezzoAttuale = mezzo;
+            return {
+                successo: false,
+                messaggio: `Il mezzo ${mezzo.id} non è disponibile per la prenotazione.`,
+                };
+            }
 
-            console.log(`L'utente ${this.nome} ${this.cognome} ha prenotato il mezzo ${mezzo.id} di tipo ${mezzo.tipo}.`);
-        } else {
-            console.log(`Il mezzo ${mezzo.id} di tipo ${mezzo.tipo} non è disponibile per la prenotazione.`);
-        };
-    }
-    terminaCorsa(): void {
-        if(!this.mezzoAttuale) {
-            console.log(`L'utente ${this.nome} ${this.cognome} non ha un mezzo attualmente in uso.`);
-            return;
+            const risultato = mezzo.assegnaUtente(this);
+            if (risultato.successo) {
+                this.mezzoAttuale = mezzo;
+            }
+
+            return risultato;
         }
-        this.mezzoAttuale.liberaMezzo(this);
-        this.mezzoAttuale = null;
     }
-}
+
+    terminaCorsa(): RisultatoAzione {
+        if(!this.mezzoAttuale) {
+            return {
+                successo: false,
+                messaggio: `L'utente ${this.nome} ${this.cognome} non ha un mezzo attualmente in uso.`
+            };
+        }
+        
+        const risultato = this.mezzoAttuale.liberaMezzo(this);
+        if (risultato.successo) {
+            this.mezzoAttuale = null;
+        }
+
+        return risultato;
+    }
+
