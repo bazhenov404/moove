@@ -31,6 +31,11 @@
   --raggio-pulsante: 50px;
 
   --transizione: 0.2s ease;
+
+  --sfondo-successo: #274d34;
+  --testo-successo: #7ee59b;
+  --sfondo-errore: #44312f;
+  --testo-errore: #e9a39c;
 }
 
 * {
@@ -84,6 +89,38 @@ button:focus-visible {
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: -1.5px;
+}
+
+/* =========================
+   BANNER
+========================= */
+
+.banner-messaggio {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  padding: 14px 24px;
+  border-radius: 12px;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  box-shadow: 0 10px 30px rgba(23, 37, 31, 0.15);
+
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.banner-messaggio.successo {
+  background-color: var(--sfondo-successo);
+  color: var(--testo-successo);
+}
+
+.banner-messaggio.errore {
+  background-color: var(--sfondo-errore);
+  color: var(--testo-errore);
 }
 
 /* =========================

@@ -2,6 +2,7 @@ import { Mezzo } from "./models/Mezzo.js";
 import { Utente } from "./models/Utente.js";
 import { Citta } from "./models/Citta.js";
 import type { TipoMezzo } from "./interfaces/IMezzo.js";
+import type { RisultatoAzione } from "./interfaces/RisultatoAzione.js";
 
 const bici1 = new Mezzo("bici", "BIKE-001");
 const scooter1 = new Mezzo("scooter", "SCOOTER-001");
@@ -20,6 +21,8 @@ milano.aggiungiMezzo(bici1);
 milano.aggiungiMezzo(scooter1);
 milano.aggiungiMezzo(monopattino1);
 
+const bannerMessaggio = document.querySelector<HTMLDivElement>("#banner-messaggio");
+
 const listaMezzi = document.querySelector<HTMLDivElement>("#lista-mezzi");
 
 const totaleMezzi = document.querySelector<HTMLSpanElement>("#totale-mezzi");
@@ -33,8 +36,22 @@ const nomiVisualizzati: Record<TipoMezzo, string> = {
   monopattino: "Monopattino",
 };
 
+function mostraBanner(risultato: RisultatoAzione): void {
+  if (!bannerMessaggio) return;
+
+  bannerMessaggio.textContent = risultato.messaggio;
+  bannerMessaggio.className = "banner-messaggio";
+  bannerMessaggio.classList.add(risultato.successo ? "successo" : "errore");
+  bannerMessaggio.hidden = false;
+
+  setTimeout(() => {
+    bannerMessaggio.hidden = true;
+  }, 3000);
+}
+
+
 function renderMezzi(): void {
-  if (!listaMezzi || !totaleMezzi || !mezziDisponibili) {
+  if (!listaMezzi || !totaleMezzi || !mezziDisponibili || !bannerMessaggio) {
     throw new Error("Elementi dell'interfaccia non trovati");
   }
 
@@ -124,11 +141,11 @@ function renderMezzi(): void {
       }
 
       if(azioneClick === "prenota") {
-        const risultato = mario.prenotaMazzo(mezzoSelezionato);
-        console.log(risultato.messaggio);
+        const risultato = mario.prenotaMezzo(mezzoSelezionato);
+        mostraBanner(risultato);
       } else if (azioneClick === "termina") {
         const risultato = mario.terminaCorsa();
-        console.log(risultato.messaggio);
+        mostraBanner(risultato);
       }
 
       renderMezzi();
