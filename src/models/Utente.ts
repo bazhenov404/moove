@@ -20,39 +20,42 @@ export class Utente implements IUtente {
     prenotaMezzo(mezzo: IMezzo): RisultatoAzione {
         if (this.mezzoAttuale) {
             return {
-                sucesso: false,
-                messaggio: `L'utente ${this.nome} ${this.cognome} ha già un mezzo in uso.`,
-            }
+                successo: false,
+                messaggio: `${this.nome} ${this.cognome} ha già un mezzo assegnato (${this.mezzoAttuale.id}).`,
+            };
         }
-        if(mezzo.stato === "disponibile") {
+
+        if (mezzo.stato !== "disponibile") {
             return {
                 successo: false,
                 messaggio: `Il mezzo ${mezzo.id} non è disponibile per la prenotazione.`,
-                };
-            }
-
-            const risultato = mezzo.assegnaUtente(this);
-            if (risultato.successo) {
-                this.mezzoAttuale = mezzo;
-            }
-
-            return risultato;
+            };
         }
+
+        const risultato = mezzo.assegnaUtente(this);
+
+        if (risultato.successo) {
+            this.mezzoAttuale = mezzo;
+        }
+
+        return risultato;
     }
 
     terminaCorsa(): RisultatoAzione {
-        if(!this.mezzoAttuale) {
+        if (!this.mezzoAttuale) {
             return {
                 successo: false,
-                messaggio: `L'utente ${this.nome} ${this.cognome} non ha un mezzo attualmente in uso.`
+                messaggio: `${this.nome} ${this.cognome} non ha nessun mezzo da restituire.`,
             };
         }
-        
+
         const risultato = this.mezzoAttuale.liberaMezzo(this);
+
         if (risultato.successo) {
             this.mezzoAttuale = null;
         }
 
         return risultato;
     }
+}
 

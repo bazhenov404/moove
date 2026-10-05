@@ -123,10 +123,12 @@ function renderMezzi(): void {
         return;
       }
 
-      if (azioneClick === "prenota") {
-        mario.prenotaMezzo(mezzoSelezionato);
+      if(azioneClick === "prenota") {
+        const risultato = mario.prenotaMazzo(mezzoSelezionato);
+        console.log(risultato.messaggio);
       } else if (azioneClick === "termina") {
-        mario.terminaCorsa();
+        const risultato = mario.terminaCorsa();
+        console.log(risultato.messaggio);
       }
 
       renderMezzi();

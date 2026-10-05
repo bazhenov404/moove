@@ -1,4 +1,5 @@
 import type { IMezzo } from "./IMezzo.js";
+import type { RisultatoAzione } from "./RisultatoAzione.js";
 
 export type MetodoPagamento =
     | "Carta di credito"
@@ -13,6 +14,6 @@ export interface IUtente {
     metodoPagamento: MetodoPagamento;
     mezzoAttuale: IMezzo | null;
 
-    prenotaMezzo(mezzo: IMezzo): void;
-    terminaCorsa(): void;
+    prenotaMezzo(mezzo: IMezzo): RisultatoAzione;
+    terminaCorsa(): RisultatoAzione;
 }
