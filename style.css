@@ -70,8 +70,7 @@ button:focus-visible {
 }
 
 .contenitore {
-  width: min(var(--larghezza-contenuto), calc(100% - 64px));
-
+  width: min(var(--larghezza-contenuto), calc(100% - 36px));
   margin: 0 auto;
 }
 
@@ -128,9 +127,9 @@ button:focus-visible {
 ========================= */
 
 .barra-navigazione {
-  width: min(var(--larghezza-contenuto), calc(100% - 64px));
+  width: min(var(--larghezza-contenuto), calc(100% - 36px));
 
-  height: 90px;
+  height: 72px;
   margin: 0 auto;
 
   display: flex;
@@ -140,7 +139,7 @@ button:focus-visible {
 
 .navigazione {
   display: flex;
-  gap: 32px;
+  gap: 14px;
 }
 
 .navigazione a {
@@ -161,25 +160,23 @@ button:focus-visible {
 ========================= */
 
 .hero {
-  width: min(var(--larghezza-contenuto), calc(100% - 64px));
+  width: min(var(--larghezza-contenuto), calc(100% - 36px));
 
-  min-height: 650px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
+  grid-template-columns: 1fr;
 
-  gap: 70px;
-  padding: 70px 0 110px;
+  gap: 40px;
+  padding: 40px 0 70px;
 }
 
 .hero h1 {
   max-width: 700px;
 
-  font-size: clamp(3.8rem, 7vw, 6.8rem);
+  font-size: clamp(2.8rem, 12vw, 3.8rem);
   line-height: 0.92;
-  letter-spacing: -4px;
+  letter-spacing: -2px;
 }
 
 .hero h1 span {
@@ -233,11 +230,11 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
 
-  min-height: 450px;
+  min-height: 330px;
 }
 
 .cerchio-grande {
-  width: min(380px, 100%);
+  width: min(300px, 100%);
   aspect-ratio: 1;
 
   display: flex;
@@ -250,7 +247,7 @@ button:focus-visible {
 }
 
 .icona-hero {
-  font-size: 8rem;
+  font-size: 6rem;
 
   transform: rotate(-8deg);
 }
@@ -635,5 +632,48 @@ button:focus-visible {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+
+@media (min-width: 800px) {
+  .contenitore,
+  .barra-navigazione,
+  .hero {
+    width: min(var(--larghezza-contenuto), calc(100% - 64px));
+  }
+
+  .barra-navigazione {
+    height: 90px;
+  }
+
+  .navigazione {
+    gap: 32px;
+  }
+
+  .hero {
+    min-height: 650px;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 70px;
+    padding: 70px 0 110px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.8rem, 7vw, 6.8rem);
+    line-height: 0.92;
+    letter-spacing: -4px;
+  }
+
+  .grafica-hero {
+    min-height: 450px;
+  }
+
+  .cerchio-grande {
+    width: min(380px, 100%);
+  }
+
+  .icona-hero {
+    font-size: 8rem;
   }
 }
