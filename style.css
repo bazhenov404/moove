@@ -548,103 +548,6 @@ button:focus-visible {
 /* =========================
    RESPONSIVE
 ========================= */
-
-@media (max-width: 800px) {
-  .contenitore,
-  .barra-navigazione,
-  .hero {
-    width: min(100% - 36px, var(--larghezza-contenuto));
-  }
-
-  .navigazione {
-    gap: 14px;
-  }
-
-  .navigazione a:last-child {
-    display: none;
-  }
-
-  .hero {
-    min-height: auto;
-
-    grid-template-columns: 1fr;
-
-    padding: 80px 0;
-  }
-
-  .hero h1 {
-    letter-spacing: -3px;
-  }
-
-  .grafica-hero {
-    min-height: 330px;
-  }
-
-  .cerchio-grande {
-    width: 300px;
-  }
-
-  .icona-hero {
-    font-size: 6rem;
-  }
-
-  .etichetta-hero {
-    right: 10%;
-    bottom: 30px;
-  }
-
-  .intestazione-sezione {
-    flex-direction: column;
-    align-items: flex-start;
-
-    gap: 20px;
-  }
-
-  .griglia-mezzi {
-    grid-template-columns: 1fr;
-  }
-
-  .griglia-passaggi {
-    grid-template-columns: 1fr;
-
-    gap: 35px;
-  }
-
-  .contenuto-chi-siamo {
-    grid-template-columns: 1fr;
-
-    gap: 50px;
-  }
-
-  .contenuto-footer {
-    flex-direction: column;
-    align-items: flex-start;
-
-    gap: 40px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-@media (hover: hover) {
-  .card-mezzo:hover {
-    border-color: var(--verde-principale);
-    transform: translateY(-4px);
-  }
-}
-
-
 @media (min-width: 800px) {
   .contenitore,
   .barra-navigazione,
@@ -676,6 +579,11 @@ button:focus-visible {
 
   .grafica-hero {
     min-height: 450px;
+  }
+
+  .etichetta-hero {
+    right: 0;
+    bottom: 65px;
   }
 
   .cerchio-grande {
@@ -722,7 +630,7 @@ button:focus-visible {
     padding: 13px 15px;
   }
 
-    .come-funziona {
+  .come-funziona {
     padding: 120px 0;
   }
 
@@ -768,3 +676,24 @@ button:focus-visible {
   }
 
 }
+
+@media (hover: hover) {
+  .card-mezzo:hover {
+    border-color: var(--verde-principale);
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
