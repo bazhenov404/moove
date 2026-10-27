@@ -438,20 +438,20 @@ button:focus-visible {
 }
 
 .come-funziona {
-  padding: 120px 0;
+  padding: 64px 0;
 }
 
 .come-funziona h2 {
-  margin-bottom: 60px;
+  margin-bottom: 36px;
 
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  letter-spacing: -3px;
+  font-size: clamp(2.1rem, 9vw, 2.8rem);
+  letter-spacing: -1.5px;
 }
 
 .griglia-passaggi {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
 }
 
 .passaggio {
@@ -468,7 +468,7 @@ button:focus-visible {
 }
 
 .passaggio h3 {
-  margin: 28px 0 12px;
+  margin: 20px 0 10px;
 
   font-size: 1.5rem;
 }
@@ -482,21 +482,21 @@ button:focus-visible {
 }
 
 .chi-siamo {
-  padding: 110px 0;
+  padding: 64px 0;
 
   background-color: var(--sfondo-chi-siamo);
 }
 
 .contenuto-chi-siamo {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  grid-template-columns: 1fr;
+  gap: 32px;
 }
 
 .chi-siamo h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.1rem, 9vw, 2.8rem);
   line-height: 1;
-  letter-spacing: -3px;
+  letter-spacing: -1.5px;
 }
 
 .testo-chi-siamo {
@@ -516,7 +516,7 @@ button:focus-visible {
 ========================= */
 
 .footer {
-  padding: 70px 0;
+  padding: 48px 0;
 
   background-color: var(--sfondo-footer);
   color: #ffffff;
@@ -524,8 +524,9 @@ button:focus-visible {
 
 .contenuto-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: end;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
 }
 
 .logo-footer {
@@ -685,7 +686,7 @@ button:focus-visible {
     font-size: 8rem;
   }
 
-    .sezione-mezzi {
+  .sezione-mezzi {
     padding: 100px 0;
   }
 
@@ -720,4 +721,50 @@ button:focus-visible {
   .pulsante-prenota {
     padding: 13px 15px;
   }
+
+    .come-funziona {
+    padding: 120px 0;
+  }
+
+  .come-funziona h2 {
+    margin-bottom: 60px;
+
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -3px;
+  }
+
+  .griglia-passaggi {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+  }
+
+  .passaggio h3 {
+    margin: 28px 0 12px;
+  }
+
+  .chi-siamo {
+    padding: 110px 0;
+  }
+
+  .contenuto-chi-siamo {
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
+
+  .chi-siamo h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -3px;
+  }
+
+  .footer {
+    padding: 70px 0;
+  }
+
+  .contenuto-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    gap: 0;
+  }
+
 }
