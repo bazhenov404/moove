@@ -1,12 +1,15 @@
 import type {IMezzo, StatoMezzo, TipoMezzo} from "../interfaces/IMezzo.js";
 import type {IUtente} from "../interfaces/IUtente.js";
 import type { RisultatoAzione } from "../interfaces/RisultatoAzione.js";
+import type { Tariffa } from "../interfaces/Tariffa.js";
 
 export class Mezzo implements IMezzo {
     tipo: TipoMezzo;
     id: string;
     stato: StatoMezzo;
     utenteAssegnato: IUtente | null;
+    inizioCorsa: Date | null;
+    tariffaCorsa: Tariffa | null;
 
 
     constructor(tipo: TipoMezzo, id: string) {
@@ -14,9 +17,11 @@ export class Mezzo implements IMezzo {
         this.id = id;
         this.stato = "disponibile";
         this.utenteAssegnato = null;
+        this.inizioCorsa = null;
+        this.tariffaCorsa = null;
     }
 
-    assegnaUtente(utente: IUtente): RisultatoAzione {
+    assegnaUtente(utente: IUtente, tariffa: Tariffa): RisultatoAzione {
         if (this.stato === "in uso") {
             return {
                 successo: false,
@@ -26,6 +31,8 @@ export class Mezzo implements IMezzo {
 
         this.stato = "in uso";
         this.utenteAssegnato = utente;
+        this.inizioCorsa = new Date();
+        this.tariffaCorsa = tariffa;
 
         return {
             successo: true,
@@ -49,6 +56,8 @@ export class Mezzo implements IMezzo {
 
     this.stato = "disponibile";
     this.utenteAssegnato = null;
+    this.inizioCorsa = null;
+    this.tariffaCorsa = null;
 
     return {
         successo: true,
