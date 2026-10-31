@@ -3,6 +3,7 @@ import { Utente } from "./models/Utente.js";
 import { Citta } from "./models/Citta.js";
 import type { TipoMezzo } from "./interfaces/IMezzo.js";
 import type { RisultatoAzione } from "./interfaces/RisultatoAzione.js";
+import type { Tariffa } from "./interfaces/Tariffa.js";
 
 const bici1 = new Mezzo("bici", "BIKE-001");
 const scooter1 = new Mezzo("scooter", "SCOOTER-001");
@@ -35,6 +36,8 @@ const nomiVisualizzati: Record<TipoMezzo, string> = {
   scooter: "Scooter elettrico",
   monopattino: "Monopattino",
 };
+
+let tariffaScelta: Tariffa = "oraria";
 
 function mostraBanner(risultato: RisultatoAzione): void {
   if (!bannerMessaggio) return;
@@ -141,12 +144,14 @@ function renderMezzi(): void {
       }
 
       if(azioneClick === "prenota") {
-        const risultato = mario.prenotaMezzo(mezzoSelezionato);
+        const risultato = mario.prenotaMezzo(mezzoSelezionato, tariffaScelta);
         mostraBanner(risultato);
       } else if (azioneClick === "termina") {
         const risultato = mario.terminaCorsa();
         mostraBanner(risultato);
       }
+
+      const risultato = mario.prenotaMezzo(mezzoSelezionato, tariffaScelta);
 
       renderMezzi();
     });

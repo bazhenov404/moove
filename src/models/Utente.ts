@@ -1,6 +1,7 @@
 import type { IMezzo } from "../interfaces/IMezzo.js";
 import type { IUtente, MetodoPagamento } from "../interfaces/IUtente.js";
 import type { RisultatoAzione } from "../interfaces/RisultatoAzione.js";
+import type { Tariffa } from "../interfaces/Tariffa.js";
 
 export class Utente implements IUtente {
     nome: string;
@@ -17,7 +18,7 @@ export class Utente implements IUtente {
         this.mezzoAttuale = null;
     }
 
-    prenotaMezzo(mezzo: IMezzo): RisultatoAzione {
+    prenotaMezzo(mezzo: IMezzo, tariffa: Tariffa): RisultatoAzione {
         if (this.mezzoAttuale) {
             return {
                 successo: false,
@@ -32,7 +33,7 @@ export class Utente implements IUtente {
             };
         }
 
-        const risultato = mezzo.assegnaUtente(this);
+        const risultato = mezzo.assegnaUtente(this, tariffa);
 
         if (risultato.successo) {
             this.mezzoAttuale = mezzo;

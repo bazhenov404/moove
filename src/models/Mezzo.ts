@@ -2,6 +2,7 @@ import type {IMezzo, StatoMezzo, TipoMezzo} from "../interfaces/IMezzo.js";
 import type {IUtente} from "../interfaces/IUtente.js";
 import type { RisultatoAzione } from "../interfaces/RisultatoAzione.js";
 import type { Tariffa } from "../interfaces/Tariffa.js";
+import { calcolaCosto } from "../config/calcolaCosto.js";
 
 export class Mezzo implements IMezzo {
     tipo: TipoMezzo;
@@ -59,9 +60,19 @@ export class Mezzo implements IMezzo {
     this.inizioCorsa = null;
     this.tariffaCorsa = null;
 
+    if (!this.inizioCorsa || !this.tariffaCorsa) {
+        return {
+            successo: false,
+            messaggio: `Il mezzo ${this.id} non ha una corsa valida da terminare.`,
+        };
+    }
+
+    const costo = calcolaCosto(this.tariffaCorsa, this.inizioCorsa, new Date());
+
     return {
         successo: true,
-        messaggio: `Il mezzo ${this.id} di tipo ${this.tipo} è stato liberato.`,
+        messaggio: `Corsa terminata. Totale ${costo.toFixed(2)} € per l'utente ${utente.nome} ${utente.cognome} con ${utente.metodoPagamento} .`,
+        costo: costo
         };
     }
 } 
