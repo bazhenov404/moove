@@ -73,7 +73,7 @@ export class Mezzo implements IMezzo {
     return {
         successo: true,
         messaggio: `Corsa terminata. Totale ${costo.toFixed(2)} € per l'utente ${utente.nome} ${utente.cognome} con ${utente.metodoPagamento} .`,
-        costo: costo
+        costo,
         };
     }
 } 
