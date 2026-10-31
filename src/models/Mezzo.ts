@@ -59,6 +59,7 @@ export class Mezzo implements IMezzo {
     this.utenteAssegnato = null;
     this.inizioCorsa = null;
     this.tariffaCorsa = null;
+    
 
     if (!this.inizioCorsa || !this.tariffaCorsa) {
         return {
