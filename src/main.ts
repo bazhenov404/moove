@@ -151,8 +151,6 @@ function renderMezzi(): void {
         mostraBanner(risultato);
       }
 
-      const risultato = mario.prenotaMezzo(mezzoSelezionato, tariffaScelta);
-
       renderMezzi();
     });
 
