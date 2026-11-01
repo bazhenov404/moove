@@ -14,7 +14,10 @@ export interface IUtente {
     email: string;
     metodoPagamento: MetodoPagamento;
     mezzoAttuale: IMezzo | null;
+    scadenzaAbbonamento: Date | null;
 
     prenotaMezzo(mezzo: IMezzo, tariffa: Tariffa): RisultatoAzione;
     terminaCorsa(): RisultatoAzione;
+    haAbbonamentoAttivo(): boolean;
+    attivaAbbonamento(): RisultatoAzione;
 }
