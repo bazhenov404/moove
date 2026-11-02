@@ -84,6 +84,39 @@
             </div>
           </div>
 
+          <div class="pannello-tariffe">
+            <div
+              class="selettore-tariffa"
+              role="group"
+              aria-label="Scegli la tariffa"
+            >
+              <button
+                type="button"
+                class="opzione-tariffa attiva"
+                data-tariffa="oraria"
+                aria-pressed="true"
+              >
+                Oraria
+                <span>1 € all'ora</span>
+              </button>
+              <button
+                type="button"
+                class="opzione-tariffa"
+                data-tariffa="giornaliera"
+                aria-pressed="false"
+              >
+                Giornaliera
+                <span>5 € al giorno</span>
+              </button>
+            </div>
+
+            <button
+              type="button"
+              id="pulsante-abbonamento"
+              class="pulsante-abbonamento"
+            ></button>
+          </div>
+
           <div id="lista-mezzi" class="griglia-mezzi"></div>
         </div>
       </section>

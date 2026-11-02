@@ -109,7 +109,9 @@ button:focus-visible {
 
   box-shadow: 0 10px 30px rgba(23, 37, 31, 0.15);
 
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .banner-messaggio.successo {
@@ -437,6 +439,79 @@ button:focus-visible {
   cursor: not-allowed;
 }
 
+.pannello-tariffe {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  margin-bottom: 28px;
+}
+
+.selettore-tariffa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.opzione-tariffa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  padding: 14px 16px;
+
+  background-color: var(--sfondo-card);
+  color: #ffffff;
+
+  border: 1px solid var(--bordo-card);
+  border-radius: 12px;
+
+  font-weight: 700;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: border-color var(--transizione);
+}
+
+.opzione-tariffa span {
+  color: var(--testo-su-scuro);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.opzione-tariffa.attiva {
+  border-color: var(--verde-principale);
+}
+
+.opzione-tariffa:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pulsante-abbonamento {
+  padding: 14px 18px;
+
+  background-color: transparent;
+  color: var(--verde-chiaro);
+
+  border: 1px solid var(--verde-principale);
+  border-radius: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.pulsante-abbonamento:disabled {
+  color: var(--testo-su-scuro);
+  border-color: var(--bordo-card);
+
+  cursor: default;
+}
+
 .come-funziona {
   padding: 64px 0;
 }
@@ -630,6 +705,16 @@ button:focus-visible {
     padding: 13px 15px;
   }
 
+  .pannello-tariffe {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .selettore-tariffa {
+    grid-template-columns: repeat(2, 200px);
+  }
+
   .come-funziona {
     padding: 120px 0;
   }
@@ -674,7 +759,6 @@ button:focus-visible {
     align-items: end;
     gap: 0;
   }
-
 }
 
 @media (hover: hover) {
@@ -696,4 +780,3 @@ button:focus-visible {
     transition: none !important;
   }
 }
-
