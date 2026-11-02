@@ -1,6 +1,7 @@
 import { Mezzo } from "./models/Mezzo.js";
 import { Utente } from "./models/Utente.js";
 import { Citta } from "./models/Citta.js";
+import { PREZZI } from "./config/prezzi.js";
 import type { TipoMezzo } from "./interfaces/IMezzo.js";
 import type { RisultatoAzione } from "./interfaces/RisultatoAzione.js";
 import type { Tariffa } from "./interfaces/Tariffa.js";
@@ -22,7 +23,8 @@ milano.aggiungiMezzo(bici1);
 milano.aggiungiMezzo(scooter1);
 milano.aggiungiMezzo(monopattino1);
 
-const bannerMessaggio = document.querySelector<HTMLDivElement>("#banner-messaggio");
+const bannerMessaggio =
+  document.querySelector<HTMLDivElement>("#banner-messaggio");
 
 const listaMezzi = document.querySelector<HTMLDivElement>("#lista-mezzi");
 
@@ -30,6 +32,13 @@ const totaleMezzi = document.querySelector<HTMLSpanElement>("#totale-mezzi");
 
 const mezziDisponibili =
   document.querySelector<HTMLSpanElement>("#mezzi-disponibili");
+
+const opzioniTariffa =
+  document.querySelectorAll<HTMLButtonElement>(".opzione-tariffa");
+
+const pulsanteAbbonamento = document.querySelector<HTMLButtonElement>(
+  "#pulsante-abbonamento",
+);
 
 const nomiVisualizzati: Record<TipoMezzo, string> = {
   bici: "Bici",
@@ -51,7 +60,6 @@ function mostraBanner(risultato: RisultatoAzione): void {
     bannerMessaggio.hidden = true;
   }, 3000);
 }
-
 
 function renderMezzi(): void {
   if (!listaMezzi || !totaleMezzi || !mezziDisponibili || !bannerMessaggio) {
@@ -143,7 +151,7 @@ function renderMezzi(): void {
         return;
       }
 
-      if(azioneClick === "prenota") {
+      if (azioneClick === "prenota") {
         const risultato = mario.prenotaMezzo(mezzoSelezionato, tariffaScelta);
         mostraBanner(risultato);
       } else if (azioneClick === "termina") {
@@ -165,5 +173,46 @@ function renderMezzi(): void {
     numeroDisponibili === 1 ? "disponibile" : "disponibili"
   }`;
 }
+
+function aggiornaPannelloTariffe(): void {
+  if (!pulsanteAbbonamento) return;
+
+  const abbonato = mario.haAbbonamentoAttivo();
+
+  opzioniTariffa.forEach((opzione) => {
+    const selezionata = opzione.dataset.tariffa === tariffaScelta;
+
+    opzione.classList.toggle("attiva", selezionata && !abbonato);
+    opzione.setAttribute("aria-pressed", String(selezionata));
+    opzione.disabled = abbonato;
+  });
+
+  if (abbonato && mario.scadenzaAbbonamento) {
+    pulsanteAbbonamento.textContent = `Abbonamento attivo fino al ${mario.scadenzaAbbonamento.toLocaleDateString("it-IT")}`;
+    pulsanteAbbonamento.disabled = true;
+  } else {
+    pulsanteAbbonamento.textContent = `Attiva abbonamento · ${PREZZI.mensile} € al mese`;
+    pulsanteAbbonamento.disabled = false;
+  }
+}
+
+opzioniTariffa.forEach((opzione) => {
+  opzione.addEventListener("click", () => {
+    const valore = opzione.dataset.tariffa;
+
+    if (valore === "oraria" || valore === "giornaliera") {
+      tariffaScelta = valore;
+      aggiornaPannelloTariffe();
+    }
+  });
+});
+
+pulsanteAbbonamento?.addEventListener("click", () => {
+  const risultato = mario.attivaAbbonamento();
+  mostraBanner(risultato);
+  aggiornaPannelloTariffe();
+});
+
+aggiornaPannelloTariffe();
 
 renderMezzi();
