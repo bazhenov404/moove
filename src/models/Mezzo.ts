@@ -25,7 +25,7 @@ export class Mezzo implements IMezzo {
     if (this.stato === "in uso") {
       return {
         successo: false,
-        messaggio: `Il mezzzo ${this.id} è gia in uso.`,
+        messaggio: `Il mezzo ${this.id} è già in uso.`,
       };
     }
 
