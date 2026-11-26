@@ -17,7 +17,7 @@ la corsa pagando secondo la tariffa scelta.
 
 ## Tecnologie
 
-TypeScript (strict), HTML e CSS. Nessuna libreria esterna, (solo il font Manrope da Google Fonts).
+TypeScript (strict), HTML e CSS. Nessuna libreria esterna (solo il font Manrope da Google Fonts).
 
 ## Struttura del progetto
 
